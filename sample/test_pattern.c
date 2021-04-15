@@ -90,7 +90,7 @@ char* test_vector[][4] =
 
 extern void re_print(re_t);
 
-int test_regex_patterns(int argc, char *argv[])
+int regex_patterns(int argc, char *argv[])
 {
     char* text;
     char* pattern;
@@ -142,4 +142,4 @@ int test_regex_patterns(int argc, char *argv[])
     return nfailed; /* 0 if all tests passed */
 }
 
-MSH_CMD_EXPORT(test_regex_patterns, Testing various regex-patterns);
+MSH_CMD_EXPORT(regex_patterns, Testing various regex-patterns);

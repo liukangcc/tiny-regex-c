@@ -6,7 +6,7 @@
 #include <re.h>
 
 
-int test_regex_expression(int argc, char** argv)
+int regex_expression(int argc, char** argv)
 {
     if (argc == 2)
     {
@@ -18,4 +18,4 @@ int test_regex_expression(int argc, char** argv)
     }
     return -2;
 }
-MSH_CMD_EXPORT(wwdg_sample, window watch dog sample);
+MSH_CMD_EXPORT(regex_expression, prints out a verbose explanation of a given regular expression);

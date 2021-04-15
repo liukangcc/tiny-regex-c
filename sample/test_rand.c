@@ -10,7 +10,7 @@
 #include <rtthread.h>
 #include <re.h>
 
-int test_regex_input(int argc, char** argv)
+int regex_rand(int argc, char** argv)
 {
     int length;
     if (argc == 3)
@@ -18,7 +18,7 @@ int test_regex_input(int argc, char** argv)
         int m = re_match(argv[1], argv[2], &length);
         if (m != -1)
         {
-            rt_kprintf("regex test success.")
+            rt_kprintf("regex test success.\n");
             return 0;
         }
         else
@@ -34,4 +34,4 @@ int test_regex_input(int argc, char** argv)
     return -2;
 }
 
-MSH_CMD_EXPORT(wwdg_sample, window watch dog sample);
+MSH_CMD_EXPORT(regex_rand, tries to match a given regular expression with text given as input to stdin);

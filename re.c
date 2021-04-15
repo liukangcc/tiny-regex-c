@@ -56,16 +56,6 @@ enum
     /* BRANCH */
 };
 
-typedef struct regex_t
-{
-    unsigned char type; /* CHAR, STAR, etc.                      */
-    union
-    {
-        unsigned char ch;   /*      the character itself             */
-        unsigned char *ccl; /*  OR  a pointer to characters in class */
-    } u;
-} regex_t;
-
 /* Private function declarations: */
 static int matchpattern(regex_t *pattern, const char *text, int *matchlength);
 static int matchcharclass(char c, const char *str);

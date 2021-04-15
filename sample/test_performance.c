@@ -2056,7 +2056,7 @@ char buf[] = {
     0x6c, 0x71, 0x67, 0x62, 0x79, 0x69, 0x67, 0x6a, 0x6f, 0x6c, 0x68, 0x67, 0x64, 0x76, 0x66, 0x73,
     0x77, 0x6d, 0x76, 0x65, 0x62, 0x68, 0x68, 0x76, 0x61, 0x68, 0x6d, 0x75, 0x6e, 0x61, 0x76, 0x00, 0x00};
 
-int test_regex_performance(int argc, char *argv[])
+int regex_performance(int argc, char *argv[])
 {
     const int ntests = 10;
     size_t bufsize = sizeof(buf) - 1;
@@ -2067,27 +2067,23 @@ int test_regex_performance(int argc, char *argv[])
 
     for (i = ntests - 1; i >= 0; --i)
     {
-    bufsizes[i] = bufsize;
-    bufsize /= 2;
+        bufsizes[i] = bufsize;
+        bufsize /= 2;
     }
 
-    rt_kprintf("\n\n");
     rt_kprintf("Testing pathological pattern '.+nonexisting.+' to force worst-case asymptotic performance: \n");
 
     for (i = 0; i < ntests; ++i)
     {
-    old = buf[bufsizes[i]];
-    buf[bufsizes[i]] = 0;
+        old = buf[bufsizes[i]];
+        buf[bufsizes[i]] = 0;
 
-    rt_kprintf("  matching on %lu bytes of test input: ", bufsizes[i]);
-    fflush(stdout);
-    rt_kprintf("%d \n", re_match(".+nonexisting.+", buf, &dummy));
+        rt_kprintf("  matching on %lu bytes of test input: ", bufsizes[i]);
+        rt_kprintf("%d \n", re_match(".+nonexisting.+", buf, &dummy));
 
-    buf[bufsizes[i]] = old;
+        buf[bufsizes[i]] = old;
     }
-
-    rt_kprintf("\n\n");
 
     return 0;
 }
-MSH_CMD_EXPORT(test_regex_performance, A small performance test for regex);
+MSH_CMD_EXPORT(regex_performance, A small performance test for regex);
